@@ -1,22 +1,43 @@
 import React from "react"
+import YAML from "yaml"
 import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
+import StackMap from "../components/stackmap"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import { Manifest} from "../cloudformation";
+import { TemplatesJsonConnection } from "../graphql-types"
 
-const IndexPage: React.FC = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+interface Props {
+  data: {
+    templates: TemplatesJsonConnection
+  }
+}
+
+const IndexPage: React.FC<Props> = ({ data }) => {
+  const manifests = data.templates.edges.map(edge => YAML.parse(edge.node.TemplateBody!) as Manifest)
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <StackMap manifests={manifests} />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    templates: allTemplatesJson {
+      edges {
+        node {
+          StackName
+          TemplateBody
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
