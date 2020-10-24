@@ -1,0 +1,7 @@
+schema:
+  - "http://127.0.0.1:8000/___graphql"
+generates:
+  ./src/graphql-types.d.ts:
+    plugins:
+      - typescript
+    

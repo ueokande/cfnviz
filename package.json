@@ -50,7 +50,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint": "eslint --ext '.js,.jsx,.ts,.tsx' src --fix",
     "lint:fix": "eslint --ext '.js,.jsx,.ts,.tsx' src",
-    "generate": "ts-node scripts/get-templates"
+    "generate:data": "ts-node scripts/get-templates",
+    "generate:types": "gql-gen"
   },
   "repository": {
     "type": "git",
