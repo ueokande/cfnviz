@@ -47,7 +47,8 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint": "eslint --ext '.js,.jsx,.ts,.tsx' src --fix",
-    "lint:fix": "eslint --ext '.js,.jsx,.ts,.tsx' src"
+    "lint:fix": "eslint --ext '.js,.jsx,.ts,.tsx' src",
+    "generate": "ts-node scripts/get-templates"
   },
   "repository": {
     "type": "git",
