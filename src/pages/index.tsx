@@ -1,11 +1,10 @@
 import React from "react"
-import YAML from "yaml"
 import { graphql } from "gatsby"
 
 import StackMap from "../components/stackmap"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Manifest } from "../cloudformation"
+import { Manifest, ManifestParser } from "../cloudformation"
 import { TemplatesJsonConnection } from "../graphql-types"
 
 interface Props {
@@ -20,7 +19,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
       if (!edge.node.TemplateBody) {
         return null
       }
-      return YAML.parse(edge.node.TemplateBody) as Manifest
+      return ManifestParser.parse(edge.node.TemplateBody) as Manifest
     })
     .filter((o): o is Manifest => o !== null)
 
