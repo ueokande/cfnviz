@@ -41,7 +41,10 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint": "eslint --ext '.js,.jsx,.ts,.tsx' src --fix",
+    "lint:fix": "eslint --ext '.js,.jsx,.ts,.tsx' src"
+
   },
   "repository": {
     "type": "git",
