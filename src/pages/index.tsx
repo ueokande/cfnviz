@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import StackMap from "../components/stackmap"
+import StackMap, { Stack } from "../components/stackmap"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Manifest, ManifestParser } from "../cloudformation"
@@ -14,19 +14,20 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const manifests = data.templates.edges
+  const stacks = data.templates.edges
     .map(edge => {
       if (!edge.node.TemplateBody) {
         return null
       }
-      return ManifestParser.parse(edge.node.TemplateBody) as Manifest
+      const manifest = ManifestParser.parse(edge.node.TemplateBody) as Manifest
+      return { name: edge.node.StackName, manifest }
     })
-    .filter((o): o is Manifest => o !== null)
+    .filter((o): o is Stack => o !== null)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <StackMap manifests={manifests} />
+      <StackMap stacks={stacks} />
     </Layout>
   )
 }
