@@ -4,6 +4,8 @@
     "esModuleInterop": true,
     "jsx": "react",
     "sourceMap": true,
+    "target": "es6",
+    "moduleResolution": "node",
 
     "strict": true,
     "noImplicitAny": true,
