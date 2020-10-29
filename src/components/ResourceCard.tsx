@@ -9,34 +9,45 @@ interface Props {
   y: number
 }
 
-const CardWidth = 180
-const CardHeight = 200
-const ImageRadius = 64
+const ImageRadius = 32
+const ImageBorderWidth = 8
 
-const ResourceCard: React.FC<Props> = ({ logicalName, resourceType, x, y }) => (
-  <Group x={x} y={y}>
-    <rect width={CardWidth} height={CardHeight} fill="white" />
-    <Group x={CardWidth / 2 - ImageRadius} y={CardWidth / 2 - ImageRadius}>
+const ResourceCard: React.FC<Props> = ({ logicalName, resourceType, x, y }) => {
+  const [showText, setShowText] = React.useState(false)
+
+  return (
+    <Group x={x} y={y}>
+      <circle
+        r={ImageRadius + ImageBorderWidth}
+        x={x}
+        y={y}
+        fill="white"
+        cursor="pointer"
+        onMouseEnter={() => setShowText(true)}
+        onMouseLeave={() => setShowText(false)}
+      />
       <image
+        x={-ImageRadius}
+        y={-ImageRadius}
         width={ImageRadius * 2}
         height={ImageRadius * 2}
         clipPath={`url(#clip-${logicalName})`}
         href={findAWSIconURL(resourceType)}
+        pointerEvents="none"
       />
       <clipPath id={`clip-${logicalName}`}>
-        <circle
-          r={ImageRadius}
-          transform={`translate(${ImageRadius},${ImageRadius})`}
-        />
+        <circle r={ImageRadius} />
       </clipPath>
+      <g opacity={showText ? 1 : 0}>
+        <text x={0} y={ImageRadius + 24} textAnchor="middle" fontWeight="bold">
+          {logicalName}
+        </text>
+        <text x={0} y={ImageRadius + 36} textAnchor="middle">
+          {resourceType}
+        </text>
+      </g>
     </Group>
-    <text x={CardWidth / 2} y={CardWidth} fontWeight="bold">
-      {logicalName}
-    </text>
-    <text x={CardWidth / 2} y={CardWidth + 16} fontWeight="bold">
-      {resourceType}
-    </text>
-  </Group>
-)
+  )
+}
 
 export default ResourceCard
