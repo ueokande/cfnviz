@@ -224,7 +224,7 @@ const Schema = yaml.Schema.create([
   RefYamlType,
 ])
 
-export const parse = (body: string): unknown => {
+export function parse<T>(body: string): T {
   const src = yaml.safeLoad(body, { schema: Schema })
 
   const parseRecursive = (current: unknown): unknown => {
@@ -247,5 +247,5 @@ export const parse = (body: string): unknown => {
     return o
   }
 
-  return parseRecursive(src)
+  return parseRecursive(src) as T
 }

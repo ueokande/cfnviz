@@ -1,10 +1,10 @@
 type Value = Fn | string | number | { [key: string]: Value } | Value[]
 
-interface Fn {
+export interface Fn {
   readonly FullName: string
 }
 
-const instanceOfFn = (a: unknown): a is Fn => {
+export const instanceOfFn = (a: unknown): a is Fn => {
   return (
     typeof a === "object" && a !== null && typeof (<Fn>a).FullName === "string"
   )
@@ -145,7 +145,7 @@ export class FnJoin implements Fn {
   readonly FullName = "Fn::Join"
 
   public readonly delimiter: string
-  public readonly values: Value[]
+  public readonly values: Value
 
   constructor(value: Value) {
     if (!(value instanceof Array) || value.length !== 2) {
@@ -153,9 +153,6 @@ export class FnJoin implements Fn {
     }
     if (typeof value[0] !== "string") {
       throw new Error("Fn::Join requires a string delimiter")
-    }
-    if (!(value[1] instanceof Array)) {
-      throw new Error("Fn::Join requires a list of value")
     }
 
     this.delimiter = value[0]

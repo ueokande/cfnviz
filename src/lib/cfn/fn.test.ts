@@ -138,9 +138,9 @@ describe("FnJoin", () => {
         ":",
         [new FnRef("A"), new FnSub("B"), new FnBase64("C")],
       ])
-      expect(fn.values[0]).toBeInstanceOf(FnRef)
-      expect(fn.values[1]).toBeInstanceOf(FnSub)
-      expect(fn.values[2]).toBeInstanceOf(FnBase64)
+      expect((fn.values as Array<unknown>)[0]).toBeInstanceOf(FnRef)
+      expect((fn.values as Array<unknown>)[1]).toBeInstanceOf(FnSub)
+      expect((fn.values as Array<unknown>)[2]).toBeInstanceOf(FnBase64)
     })
 
     it("throws an error when invalid parameters", () => {
