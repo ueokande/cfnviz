@@ -343,6 +343,163 @@ export type DuotoneGradient = {
   opacity?: Maybe<Scalars['Int']>;
 };
 
+export type ExportsJson = Node & {
+  __typename?: 'ExportsJson';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  Name?: Maybe<Scalars['String']>;
+  ExportingStackId?: Maybe<Scalars['String']>;
+  Value?: Maybe<Scalars['String']>;
+};
+
+export type ExportsJsonConnection = {
+  __typename?: 'ExportsJsonConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ExportsJsonEdge>;
+  nodes: Array<ExportsJson>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ExportsJsonGroupConnection>;
+};
+
+
+export type ExportsJsonConnectionDistinctArgs = {
+  field: ExportsJsonFieldsEnum;
+};
+
+
+export type ExportsJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ExportsJsonFieldsEnum;
+};
+
+export type ExportsJsonEdge = {
+  __typename?: 'ExportsJsonEdge';
+  next?: Maybe<ExportsJson>;
+  node: ExportsJson;
+  previous?: Maybe<ExportsJson>;
+};
+
+export enum ExportsJsonFieldsEnum {
+  Id = 'id',
+  ParentId = 'parent___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentParentId = 'parent___parent___parent___id',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  Children = 'children',
+  ChildrenId = 'children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  Name = 'Name',
+  ExportingStackId = 'ExportingStackId',
+  Value = 'Value'
+}
+
+export type ExportsJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  Name?: Maybe<StringQueryOperatorInput>;
+  ExportingStackId?: Maybe<StringQueryOperatorInput>;
+  Value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ExportsJsonGroupConnection = {
+  __typename?: 'ExportsJsonGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ExportsJsonEdge>;
+  nodes: Array<ExportsJson>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ExportsJsonSortInput = {
+  fields?: Maybe<Array<Maybe<ExportsJsonFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 export type File = Node & {
   __typename?: 'File';
   sourceInstanceName: Scalars['String'];
@@ -387,7 +544,9 @@ export type File = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  childStacksJson?: Maybe<StacksJson>;
   childTemplatesJson?: Maybe<TemplatesJson>;
+  childExportsJson?: Maybe<ExportsJson>;
 };
 
 
@@ -687,6 +846,53 @@ export enum FileFieldsEnum {
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
+  ChildStacksJsonId = 'childStacksJson___id',
+  ChildStacksJsonParentId = 'childStacksJson___parent___id',
+  ChildStacksJsonParentParentId = 'childStacksJson___parent___parent___id',
+  ChildStacksJsonParentParentChildren = 'childStacksJson___parent___parent___children',
+  ChildStacksJsonParentChildren = 'childStacksJson___parent___children',
+  ChildStacksJsonParentChildrenId = 'childStacksJson___parent___children___id',
+  ChildStacksJsonParentChildrenChildren = 'childStacksJson___parent___children___children',
+  ChildStacksJsonParentInternalContent = 'childStacksJson___parent___internal___content',
+  ChildStacksJsonParentInternalContentDigest = 'childStacksJson___parent___internal___contentDigest',
+  ChildStacksJsonParentInternalDescription = 'childStacksJson___parent___internal___description',
+  ChildStacksJsonParentInternalFieldOwners = 'childStacksJson___parent___internal___fieldOwners',
+  ChildStacksJsonParentInternalIgnoreType = 'childStacksJson___parent___internal___ignoreType',
+  ChildStacksJsonParentInternalMediaType = 'childStacksJson___parent___internal___mediaType',
+  ChildStacksJsonParentInternalOwner = 'childStacksJson___parent___internal___owner',
+  ChildStacksJsonParentInternalType = 'childStacksJson___parent___internal___type',
+  ChildStacksJsonChildren = 'childStacksJson___children',
+  ChildStacksJsonChildrenId = 'childStacksJson___children___id',
+  ChildStacksJsonChildrenParentId = 'childStacksJson___children___parent___id',
+  ChildStacksJsonChildrenParentChildren = 'childStacksJson___children___parent___children',
+  ChildStacksJsonChildrenChildren = 'childStacksJson___children___children',
+  ChildStacksJsonChildrenChildrenId = 'childStacksJson___children___children___id',
+  ChildStacksJsonChildrenChildrenChildren = 'childStacksJson___children___children___children',
+  ChildStacksJsonChildrenInternalContent = 'childStacksJson___children___internal___content',
+  ChildStacksJsonChildrenInternalContentDigest = 'childStacksJson___children___internal___contentDigest',
+  ChildStacksJsonChildrenInternalDescription = 'childStacksJson___children___internal___description',
+  ChildStacksJsonChildrenInternalFieldOwners = 'childStacksJson___children___internal___fieldOwners',
+  ChildStacksJsonChildrenInternalIgnoreType = 'childStacksJson___children___internal___ignoreType',
+  ChildStacksJsonChildrenInternalMediaType = 'childStacksJson___children___internal___mediaType',
+  ChildStacksJsonChildrenInternalOwner = 'childStacksJson___children___internal___owner',
+  ChildStacksJsonChildrenInternalType = 'childStacksJson___children___internal___type',
+  ChildStacksJsonInternalContent = 'childStacksJson___internal___content',
+  ChildStacksJsonInternalContentDigest = 'childStacksJson___internal___contentDigest',
+  ChildStacksJsonInternalDescription = 'childStacksJson___internal___description',
+  ChildStacksJsonInternalFieldOwners = 'childStacksJson___internal___fieldOwners',
+  ChildStacksJsonInternalIgnoreType = 'childStacksJson___internal___ignoreType',
+  ChildStacksJsonInternalMediaType = 'childStacksJson___internal___mediaType',
+  ChildStacksJsonInternalOwner = 'childStacksJson___internal___owner',
+  ChildStacksJsonInternalType = 'childStacksJson___internal___type',
+  ChildStacksJsonStackName = 'childStacksJson___StackName',
+  ChildStacksJsonStackId = 'childStacksJson___StackId',
+  ChildStacksJsonParameters = 'childStacksJson___Parameters',
+  ChildStacksJsonParametersParameterKey = 'childStacksJson___Parameters___ParameterKey',
+  ChildStacksJsonParametersParameterValue = 'childStacksJson___Parameters___ParameterValue',
+  ChildStacksJsonOutputs = 'childStacksJson___Outputs',
+  ChildStacksJsonOutputsOutputKey = 'childStacksJson___Outputs___OutputKey',
+  ChildStacksJsonOutputsOutputValue = 'childStacksJson___Outputs___OutputValue',
+  ChildStacksJsonOutputsExportName = 'childStacksJson___Outputs___ExportName',
   ChildTemplatesJsonId = 'childTemplatesJson___id',
   ChildTemplatesJsonParentId = 'childTemplatesJson___parent___id',
   ChildTemplatesJsonParentParentId = 'childTemplatesJson___parent___parent___id',
@@ -727,7 +933,48 @@ export enum FileFieldsEnum {
   ChildTemplatesJsonInternalType = 'childTemplatesJson___internal___type',
   ChildTemplatesJsonStackName = 'childTemplatesJson___StackName',
   ChildTemplatesJsonStackId = 'childTemplatesJson___StackId',
-  ChildTemplatesJsonTemplateBody = 'childTemplatesJson___TemplateBody'
+  ChildTemplatesJsonTemplateBody = 'childTemplatesJson___TemplateBody',
+  ChildExportsJsonId = 'childExportsJson___id',
+  ChildExportsJsonParentId = 'childExportsJson___parent___id',
+  ChildExportsJsonParentParentId = 'childExportsJson___parent___parent___id',
+  ChildExportsJsonParentParentChildren = 'childExportsJson___parent___parent___children',
+  ChildExportsJsonParentChildren = 'childExportsJson___parent___children',
+  ChildExportsJsonParentChildrenId = 'childExportsJson___parent___children___id',
+  ChildExportsJsonParentChildrenChildren = 'childExportsJson___parent___children___children',
+  ChildExportsJsonParentInternalContent = 'childExportsJson___parent___internal___content',
+  ChildExportsJsonParentInternalContentDigest = 'childExportsJson___parent___internal___contentDigest',
+  ChildExportsJsonParentInternalDescription = 'childExportsJson___parent___internal___description',
+  ChildExportsJsonParentInternalFieldOwners = 'childExportsJson___parent___internal___fieldOwners',
+  ChildExportsJsonParentInternalIgnoreType = 'childExportsJson___parent___internal___ignoreType',
+  ChildExportsJsonParentInternalMediaType = 'childExportsJson___parent___internal___mediaType',
+  ChildExportsJsonParentInternalOwner = 'childExportsJson___parent___internal___owner',
+  ChildExportsJsonParentInternalType = 'childExportsJson___parent___internal___type',
+  ChildExportsJsonChildren = 'childExportsJson___children',
+  ChildExportsJsonChildrenId = 'childExportsJson___children___id',
+  ChildExportsJsonChildrenParentId = 'childExportsJson___children___parent___id',
+  ChildExportsJsonChildrenParentChildren = 'childExportsJson___children___parent___children',
+  ChildExportsJsonChildrenChildren = 'childExportsJson___children___children',
+  ChildExportsJsonChildrenChildrenId = 'childExportsJson___children___children___id',
+  ChildExportsJsonChildrenChildrenChildren = 'childExportsJson___children___children___children',
+  ChildExportsJsonChildrenInternalContent = 'childExportsJson___children___internal___content',
+  ChildExportsJsonChildrenInternalContentDigest = 'childExportsJson___children___internal___contentDigest',
+  ChildExportsJsonChildrenInternalDescription = 'childExportsJson___children___internal___description',
+  ChildExportsJsonChildrenInternalFieldOwners = 'childExportsJson___children___internal___fieldOwners',
+  ChildExportsJsonChildrenInternalIgnoreType = 'childExportsJson___children___internal___ignoreType',
+  ChildExportsJsonChildrenInternalMediaType = 'childExportsJson___children___internal___mediaType',
+  ChildExportsJsonChildrenInternalOwner = 'childExportsJson___children___internal___owner',
+  ChildExportsJsonChildrenInternalType = 'childExportsJson___children___internal___type',
+  ChildExportsJsonInternalContent = 'childExportsJson___internal___content',
+  ChildExportsJsonInternalContentDigest = 'childExportsJson___internal___contentDigest',
+  ChildExportsJsonInternalDescription = 'childExportsJson___internal___description',
+  ChildExportsJsonInternalFieldOwners = 'childExportsJson___internal___fieldOwners',
+  ChildExportsJsonInternalIgnoreType = 'childExportsJson___internal___ignoreType',
+  ChildExportsJsonInternalMediaType = 'childExportsJson___internal___mediaType',
+  ChildExportsJsonInternalOwner = 'childExportsJson___internal___owner',
+  ChildExportsJsonInternalType = 'childExportsJson___internal___type',
+  ChildExportsJsonName = 'childExportsJson___Name',
+  ChildExportsJsonExportingStackId = 'childExportsJson___ExportingStackId',
+  ChildExportsJsonValue = 'childExportsJson___Value'
 }
 
 export type FileFilterInput = {
@@ -770,7 +1017,9 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  childStacksJson?: Maybe<StacksJsonFilterInput>;
   childTemplatesJson?: Maybe<TemplatesJsonFilterInput>;
+  childExportsJson?: Maybe<ExportsJsonFilterInput>;
 };
 
 export type FileGroupConnection = {
@@ -1408,12 +1657,16 @@ export type Query = {
   allSitePage: SitePageConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
+  exportsJson?: Maybe<ExportsJson>;
+  allExportsJson: ExportsJsonConnection;
+  templatesJson?: Maybe<TemplatesJson>;
+  allTemplatesJson: TemplatesJsonConnection;
+  stacksJson?: Maybe<StacksJson>;
+  allStacksJson: StacksJsonConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
   allSitePlugin: SitePluginConnection;
-  templatesJson?: Maybe<TemplatesJson>;
-  allTemplatesJson: TemplatesJsonConnection;
 };
 
 
@@ -1457,7 +1710,9 @@ export type QueryFileArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  childStacksJson?: Maybe<StacksJsonFilterInput>;
   childTemplatesJson?: Maybe<TemplatesJsonFilterInput>;
+  childExportsJson?: Maybe<ExportsJsonFilterInput>;
 };
 
 
@@ -1546,14 +1801,14 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
-  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
-  componentPath?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  pluginCreator?: Maybe<SitePluginFilterInput>;
+  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
+  componentPath?: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -1582,6 +1837,64 @@ export type QueryImageSharpArgs = {
 export type QueryAllImageSharpArgs = {
   filter?: Maybe<ImageSharpFilterInput>;
   sort?: Maybe<ImageSharpSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryExportsJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  Name?: Maybe<StringQueryOperatorInput>;
+  ExportingStackId?: Maybe<StringQueryOperatorInput>;
+  Value?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllExportsJsonArgs = {
+  filter?: Maybe<ExportsJsonFilterInput>;
+  sort?: Maybe<ExportsJsonSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryTemplatesJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  StackName?: Maybe<StringQueryOperatorInput>;
+  StackId?: Maybe<StringQueryOperatorInput>;
+  TemplateBody?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllTemplatesJsonArgs = {
+  filter?: Maybe<TemplatesJsonFilterInput>;
+  sort?: Maybe<TemplatesJsonSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryStacksJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  StackName?: Maybe<StringQueryOperatorInput>;
+  StackId?: Maybe<StringQueryOperatorInput>;
+  Parameters?: Maybe<StacksJsonParametersFilterListInput>;
+  Outputs?: Maybe<StacksJsonOutputsFilterListInput>;
+};
+
+
+export type QueryAllStacksJsonArgs = {
+  filter?: Maybe<StacksJsonFilterInput>;
+  sort?: Maybe<StacksJsonSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -1624,25 +1937,6 @@ export type QuerySitePluginArgs = {
 export type QueryAllSitePluginArgs = {
   filter?: Maybe<SitePluginFilterInput>;
   sort?: Maybe<SitePluginSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryTemplatesJsonArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  StackName?: Maybe<StringQueryOperatorInput>;
-  StackId?: Maybe<StringQueryOperatorInput>;
-  TemplateBody?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllTemplatesJsonArgs = {
-  filter?: Maybe<TemplatesJsonFilterInput>;
-  sort?: Maybe<TemplatesJsonSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -1984,14 +2278,14 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
-  isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
-  pluginCreator?: Maybe<SitePlugin>;
-  pluginCreatorId?: Maybe<Scalars['String']>;
-  componentPath?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  pluginCreator?: Maybe<SitePlugin>;
+  pluginCreatorId?: Maybe<Scalars['String']>;
+  componentPath?: Maybe<Scalars['String']>;
 };
 
 export type SitePageConnection = {
@@ -2029,84 +2323,6 @@ export enum SitePageFieldsEnum {
   InternalComponentName = 'internalComponentName',
   ComponentChunkName = 'componentChunkName',
   MatchPath = 'matchPath',
-  IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  PluginCreatorId = 'pluginCreator___id',
-  PluginCreatorParentId = 'pluginCreator___parent___id',
-  PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
-  PluginCreatorParentParentChildren = 'pluginCreator___parent___parent___children',
-  PluginCreatorParentChildren = 'pluginCreator___parent___children',
-  PluginCreatorParentChildrenId = 'pluginCreator___parent___children___id',
-  PluginCreatorParentChildrenChildren = 'pluginCreator___parent___children___children',
-  PluginCreatorParentInternalContent = 'pluginCreator___parent___internal___content',
-  PluginCreatorParentInternalContentDigest = 'pluginCreator___parent___internal___contentDigest',
-  PluginCreatorParentInternalDescription = 'pluginCreator___parent___internal___description',
-  PluginCreatorParentInternalFieldOwners = 'pluginCreator___parent___internal___fieldOwners',
-  PluginCreatorParentInternalIgnoreType = 'pluginCreator___parent___internal___ignoreType',
-  PluginCreatorParentInternalMediaType = 'pluginCreator___parent___internal___mediaType',
-  PluginCreatorParentInternalOwner = 'pluginCreator___parent___internal___owner',
-  PluginCreatorParentInternalType = 'pluginCreator___parent___internal___type',
-  PluginCreatorChildren = 'pluginCreator___children',
-  PluginCreatorChildrenId = 'pluginCreator___children___id',
-  PluginCreatorChildrenParentId = 'pluginCreator___children___parent___id',
-  PluginCreatorChildrenParentChildren = 'pluginCreator___children___parent___children',
-  PluginCreatorChildrenChildren = 'pluginCreator___children___children',
-  PluginCreatorChildrenChildrenId = 'pluginCreator___children___children___id',
-  PluginCreatorChildrenChildrenChildren = 'pluginCreator___children___children___children',
-  PluginCreatorChildrenInternalContent = 'pluginCreator___children___internal___content',
-  PluginCreatorChildrenInternalContentDigest = 'pluginCreator___children___internal___contentDigest',
-  PluginCreatorChildrenInternalDescription = 'pluginCreator___children___internal___description',
-  PluginCreatorChildrenInternalFieldOwners = 'pluginCreator___children___internal___fieldOwners',
-  PluginCreatorChildrenInternalIgnoreType = 'pluginCreator___children___internal___ignoreType',
-  PluginCreatorChildrenInternalMediaType = 'pluginCreator___children___internal___mediaType',
-  PluginCreatorChildrenInternalOwner = 'pluginCreator___children___internal___owner',
-  PluginCreatorChildrenInternalType = 'pluginCreator___children___internal___type',
-  PluginCreatorInternalContent = 'pluginCreator___internal___content',
-  PluginCreatorInternalContentDigest = 'pluginCreator___internal___contentDigest',
-  PluginCreatorInternalDescription = 'pluginCreator___internal___description',
-  PluginCreatorInternalFieldOwners = 'pluginCreator___internal___fieldOwners',
-  PluginCreatorInternalIgnoreType = 'pluginCreator___internal___ignoreType',
-  PluginCreatorInternalMediaType = 'pluginCreator___internal___mediaType',
-  PluginCreatorInternalOwner = 'pluginCreator___internal___owner',
-  PluginCreatorInternalType = 'pluginCreator___internal___type',
-  PluginCreatorResolve = 'pluginCreator___resolve',
-  PluginCreatorName = 'pluginCreator___name',
-  PluginCreatorVersion = 'pluginCreator___version',
-  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
-  PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
-  PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
-  PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
-  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
-  PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
-  PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
-  PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
-  PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
-  PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
-  PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
-  PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
-  PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
-  PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
-  PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
-  PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
-  PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
-  PluginCreatorPluginFilepath = 'pluginCreator___pluginFilepath',
-  PluginCreatorPackageJsonName = 'pluginCreator___packageJson___name',
-  PluginCreatorPackageJsonDescription = 'pluginCreator___packageJson___description',
-  PluginCreatorPackageJsonVersion = 'pluginCreator___packageJson___version',
-  PluginCreatorPackageJsonMain = 'pluginCreator___packageJson___main',
-  PluginCreatorPackageJsonAuthor = 'pluginCreator___packageJson___author',
-  PluginCreatorPackageJsonLicense = 'pluginCreator___packageJson___license',
-  PluginCreatorPackageJsonDependencies = 'pluginCreator___packageJson___dependencies',
-  PluginCreatorPackageJsonDependenciesName = 'pluginCreator___packageJson___dependencies___name',
-  PluginCreatorPackageJsonDependenciesVersion = 'pluginCreator___packageJson___dependencies___version',
-  PluginCreatorPackageJsonDevDependencies = 'pluginCreator___packageJson___devDependencies',
-  PluginCreatorPackageJsonDevDependenciesName = 'pluginCreator___packageJson___devDependencies___name',
-  PluginCreatorPackageJsonDevDependenciesVersion = 'pluginCreator___packageJson___devDependencies___version',
-  PluginCreatorPackageJsonPeerDependencies = 'pluginCreator___packageJson___peerDependencies',
-  PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
-  PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
-  PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
-  PluginCreatorId = 'pluginCreatorId',
-  ComponentPath = 'componentPath',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -2192,7 +2408,85 @@ export enum SitePageFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
+  IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  PluginCreatorId = 'pluginCreator___id',
+  PluginCreatorParentId = 'pluginCreator___parent___id',
+  PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
+  PluginCreatorParentParentChildren = 'pluginCreator___parent___parent___children',
+  PluginCreatorParentChildren = 'pluginCreator___parent___children',
+  PluginCreatorParentChildrenId = 'pluginCreator___parent___children___id',
+  PluginCreatorParentChildrenChildren = 'pluginCreator___parent___children___children',
+  PluginCreatorParentInternalContent = 'pluginCreator___parent___internal___content',
+  PluginCreatorParentInternalContentDigest = 'pluginCreator___parent___internal___contentDigest',
+  PluginCreatorParentInternalDescription = 'pluginCreator___parent___internal___description',
+  PluginCreatorParentInternalFieldOwners = 'pluginCreator___parent___internal___fieldOwners',
+  PluginCreatorParentInternalIgnoreType = 'pluginCreator___parent___internal___ignoreType',
+  PluginCreatorParentInternalMediaType = 'pluginCreator___parent___internal___mediaType',
+  PluginCreatorParentInternalOwner = 'pluginCreator___parent___internal___owner',
+  PluginCreatorParentInternalType = 'pluginCreator___parent___internal___type',
+  PluginCreatorChildren = 'pluginCreator___children',
+  PluginCreatorChildrenId = 'pluginCreator___children___id',
+  PluginCreatorChildrenParentId = 'pluginCreator___children___parent___id',
+  PluginCreatorChildrenParentChildren = 'pluginCreator___children___parent___children',
+  PluginCreatorChildrenChildren = 'pluginCreator___children___children',
+  PluginCreatorChildrenChildrenId = 'pluginCreator___children___children___id',
+  PluginCreatorChildrenChildrenChildren = 'pluginCreator___children___children___children',
+  PluginCreatorChildrenInternalContent = 'pluginCreator___children___internal___content',
+  PluginCreatorChildrenInternalContentDigest = 'pluginCreator___children___internal___contentDigest',
+  PluginCreatorChildrenInternalDescription = 'pluginCreator___children___internal___description',
+  PluginCreatorChildrenInternalFieldOwners = 'pluginCreator___children___internal___fieldOwners',
+  PluginCreatorChildrenInternalIgnoreType = 'pluginCreator___children___internal___ignoreType',
+  PluginCreatorChildrenInternalMediaType = 'pluginCreator___children___internal___mediaType',
+  PluginCreatorChildrenInternalOwner = 'pluginCreator___children___internal___owner',
+  PluginCreatorChildrenInternalType = 'pluginCreator___children___internal___type',
+  PluginCreatorInternalContent = 'pluginCreator___internal___content',
+  PluginCreatorInternalContentDigest = 'pluginCreator___internal___contentDigest',
+  PluginCreatorInternalDescription = 'pluginCreator___internal___description',
+  PluginCreatorInternalFieldOwners = 'pluginCreator___internal___fieldOwners',
+  PluginCreatorInternalIgnoreType = 'pluginCreator___internal___ignoreType',
+  PluginCreatorInternalMediaType = 'pluginCreator___internal___mediaType',
+  PluginCreatorInternalOwner = 'pluginCreator___internal___owner',
+  PluginCreatorInternalType = 'pluginCreator___internal___type',
+  PluginCreatorResolve = 'pluginCreator___resolve',
+  PluginCreatorName = 'pluginCreator___name',
+  PluginCreatorVersion = 'pluginCreator___version',
+  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
+  PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
+  PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
+  PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
+  PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
+  PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
+  PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
+  PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
+  PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
+  PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
+  PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
+  PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
+  PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
+  PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
+  PluginCreatorPluginFilepath = 'pluginCreator___pluginFilepath',
+  PluginCreatorPackageJsonName = 'pluginCreator___packageJson___name',
+  PluginCreatorPackageJsonDescription = 'pluginCreator___packageJson___description',
+  PluginCreatorPackageJsonVersion = 'pluginCreator___packageJson___version',
+  PluginCreatorPackageJsonMain = 'pluginCreator___packageJson___main',
+  PluginCreatorPackageJsonAuthor = 'pluginCreator___packageJson___author',
+  PluginCreatorPackageJsonLicense = 'pluginCreator___packageJson___license',
+  PluginCreatorPackageJsonDependencies = 'pluginCreator___packageJson___dependencies',
+  PluginCreatorPackageJsonDependenciesName = 'pluginCreator___packageJson___dependencies___name',
+  PluginCreatorPackageJsonDependenciesVersion = 'pluginCreator___packageJson___dependencies___version',
+  PluginCreatorPackageJsonDevDependencies = 'pluginCreator___packageJson___devDependencies',
+  PluginCreatorPackageJsonDevDependenciesName = 'pluginCreator___packageJson___devDependencies___name',
+  PluginCreatorPackageJsonDevDependenciesVersion = 'pluginCreator___packageJson___devDependencies___version',
+  PluginCreatorPackageJsonPeerDependencies = 'pluginCreator___packageJson___peerDependencies',
+  PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
+  PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
+  PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
+  PluginCreatorId = 'pluginCreatorId',
+  ComponentPath = 'componentPath'
 }
 
 export type SitePageFilterInput = {
@@ -2201,14 +2495,14 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
-  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
-  componentPath?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  pluginCreator?: Maybe<SitePluginFilterInput>;
+  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
+  componentPath?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -2558,6 +2852,203 @@ export enum SortOrderEnum {
   Asc = 'ASC',
   Desc = 'DESC'
 }
+
+export type StacksJson = Node & {
+  __typename?: 'StacksJson';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  StackName?: Maybe<Scalars['String']>;
+  StackId?: Maybe<Scalars['String']>;
+  Parameters?: Maybe<Array<Maybe<StacksJsonParameters>>>;
+  Outputs?: Maybe<Array<Maybe<StacksJsonOutputs>>>;
+};
+
+export type StacksJsonConnection = {
+  __typename?: 'StacksJsonConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<StacksJsonEdge>;
+  nodes: Array<StacksJson>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<StacksJsonGroupConnection>;
+};
+
+
+export type StacksJsonConnectionDistinctArgs = {
+  field: StacksJsonFieldsEnum;
+};
+
+
+export type StacksJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: StacksJsonFieldsEnum;
+};
+
+export type StacksJsonEdge = {
+  __typename?: 'StacksJsonEdge';
+  next?: Maybe<StacksJson>;
+  node: StacksJson;
+  previous?: Maybe<StacksJson>;
+};
+
+export enum StacksJsonFieldsEnum {
+  Id = 'id',
+  ParentId = 'parent___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentParentId = 'parent___parent___parent___id',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  Children = 'children',
+  ChildrenId = 'children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  StackName = 'StackName',
+  StackId = 'StackId',
+  Parameters = 'Parameters',
+  ParametersParameterKey = 'Parameters___ParameterKey',
+  ParametersParameterValue = 'Parameters___ParameterValue',
+  Outputs = 'Outputs',
+  OutputsOutputKey = 'Outputs___OutputKey',
+  OutputsOutputValue = 'Outputs___OutputValue',
+  OutputsExportName = 'Outputs___ExportName'
+}
+
+export type StacksJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  StackName?: Maybe<StringQueryOperatorInput>;
+  StackId?: Maybe<StringQueryOperatorInput>;
+  Parameters?: Maybe<StacksJsonParametersFilterListInput>;
+  Outputs?: Maybe<StacksJsonOutputsFilterListInput>;
+};
+
+export type StacksJsonGroupConnection = {
+  __typename?: 'StacksJsonGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<StacksJsonEdge>;
+  nodes: Array<StacksJson>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type StacksJsonOutputs = {
+  __typename?: 'StacksJsonOutputs';
+  OutputKey?: Maybe<Scalars['String']>;
+  OutputValue?: Maybe<Scalars['String']>;
+  ExportName?: Maybe<Scalars['String']>;
+};
+
+export type StacksJsonOutputsFilterInput = {
+  OutputKey?: Maybe<StringQueryOperatorInput>;
+  OutputValue?: Maybe<StringQueryOperatorInput>;
+  ExportName?: Maybe<StringQueryOperatorInput>;
+};
+
+export type StacksJsonOutputsFilterListInput = {
+  elemMatch?: Maybe<StacksJsonOutputsFilterInput>;
+};
+
+export type StacksJsonParameters = {
+  __typename?: 'StacksJsonParameters';
+  ParameterKey?: Maybe<Scalars['String']>;
+  ParameterValue?: Maybe<Scalars['String']>;
+};
+
+export type StacksJsonParametersFilterInput = {
+  ParameterKey?: Maybe<StringQueryOperatorInput>;
+  ParameterValue?: Maybe<StringQueryOperatorInput>;
+};
+
+export type StacksJsonParametersFilterListInput = {
+  elemMatch?: Maybe<StacksJsonParametersFilterInput>;
+};
+
+export type StacksJsonSortInput = {
+  fields?: Maybe<Array<Maybe<StacksJsonFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
 
 export type StringQueryOperatorInput = {
   eq?: Maybe<Scalars['String']>;

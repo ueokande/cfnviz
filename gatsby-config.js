@@ -27,12 +27,26 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-transformer-json',
+    "gatsby-transformer-json",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `stacks`,
+        path: `${__dirname}/data/stacks`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `templates`,
         path: `${__dirname}/data/templates`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `exports`,
+        path: `${__dirname}/data/exports`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

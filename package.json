@@ -57,7 +57,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint --ext '.js,.jsx,.ts,.tsx' src",
     "lint:fix": "eslint --ext '.js,.jsx,.ts,.tsx' src --fix",
-    "generate:data": "ts-node scripts/get-templates",
+    "generate:data": "ts-node scripts/get-stacks",
     "generate:types": "gql-gen"
   },
   "repository": {
