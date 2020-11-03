@@ -1,6 +1,23 @@
+export interface Fn {
+  readonly FullName: string
+}
+
+export const instanceOfFn = (a: unknown): a is Fn => {
+  return (
+    typeof a === "object" && a !== null && typeof (<Fn>a).FullName === "string"
+  )
+}
+
+export type FieldValue =
+  | Fn
+  | string
+  | number
+  | { [key: string]: FieldValue }
+  | FieldValue[]
+
 export type ResourceData = {
   Type: string
-  Properties: { [key: string]: unknown }
+  Properties: { [key: string]: FieldValue }
 }
 
 export class Resource {

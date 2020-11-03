@@ -1,19 +1,9 @@
-type Value = Fn | string | number | { [key: string]: Value } | Value[]
-
-export interface Fn {
-  readonly FullName: string
-}
-
-export const instanceOfFn = (a: unknown): a is Fn => {
-  return (
-    typeof a === "object" && a !== null && typeof (<Fn>a).FullName === "string"
-  )
-}
+import { Fn, FieldValue, instanceOfFn } from "./manifest"
 
 export class FnBase64 implements Fn {
   readonly FullName = "Fn::Base64"
 
-  constructor(public readonly src: Value) {}
+  constructor(public readonly src: FieldValue) {}
 }
 
 export class FnCidr implements Fn {
@@ -23,13 +13,13 @@ export class FnCidr implements Fn {
   public readonly count: string | FnSelect | FnRef
   public readonly cidrBits: string | FnSelect | FnRef
 
-  constructor(public readonly value: Value) {
+  constructor(public readonly value: FieldValue) {
     if (!(value instanceof Array) || value.length !== 3) {
       throw new Error(
         "Fn::Cidr requires three parameters in an array, the ip block, count, and cidr bits"
       )
     }
-    const validType = (v: Value): v is string | FnRef | FnSelect => {
+    const validType = (v: FieldValue): v is string | FnRef | FnSelect => {
       return (
         typeof v === "string" || v instanceof FnRef || v instanceof FnSelect
       )
@@ -51,14 +41,14 @@ export class FnFindInMap implements Fn {
   public readonly topLevelKey: string | FnFindInMap | FnRef
   public readonly secondLevelKey: string | FnFindInMap | FnRef
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (!(value instanceof Array) || value.length != 3) {
       throw new Error(
         "Fn::FindInMap requires three prameters in an array, the map name, map key and the attribute for return value"
       )
     }
 
-    const validType = (v: Value): v is string | FnRef | FnFindInMap => {
+    const validType = (v: FieldValue): v is string | FnRef | FnFindInMap => {
       return (
         typeof v === "string" || v instanceof FnFindInMap || v instanceof FnRef
       )
@@ -80,7 +70,7 @@ export class FnGetAtt implements Fn {
   public readonly resource: string
   public readonly attribute: FnRef | string
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (
       !(value instanceof Array) ||
       value.length !== 2 ||
@@ -101,7 +91,7 @@ export class FnGetAZs implements Fn {
   readonly FullName = "Fn::GetAZs"
   public readonly region: string | FnRef
 
-  constructor(region: Value) {
+  constructor(region: FieldValue) {
     if (typeof region !== "string" && !(region instanceof FnRef)) {
       throw new Error("Fn::GetAZs requires a string or Ref")
     }
@@ -122,7 +112,7 @@ export class FnImportValue implements Fn {
     | FnSub
     | FnRef
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (
       typeof value !== "string" &&
       !(value instanceof FnBase64) &&
@@ -145,9 +135,9 @@ export class FnJoin implements Fn {
   readonly FullName = "Fn::Join"
 
   public readonly delimiter: string
-  public readonly values: Value
+  public readonly values: FieldValue
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (!(value instanceof Array) || value.length !== 2) {
       throw new Error("Fn::Join requires a delimiter and list of value")
     }
@@ -164,9 +154,9 @@ export class FnSelect implements Fn {
   readonly FullName = "Fn::Select"
 
   public readonly index: string | FnRef | FnFindInMap
-  public readonly values: Value
+  public readonly values: FieldValue
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (!(value instanceof Array) || value.length !== 2) {
       throw new Error("Fn::Select requires the index and the list of objects")
     }
@@ -192,9 +182,9 @@ export class FnSplit implements Fn {
   readonly FullName = "Fn::Split"
 
   public readonly delimiter: string
-  public readonly values: Value
+  public readonly values: FieldValue
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (!(value instanceof Array) || value.length !== 2) {
       throw new Error("Fn::Split requires the delimiter and list of values")
     }
@@ -210,9 +200,9 @@ export class FnSub implements Fn {
   readonly FullName = "Fn::Sub"
 
   public readonly template: string
-  public readonly values: { [name: string]: Value }
+  public readonly values: { [name: string]: FieldValue }
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (typeof value === "string") {
       this.template = value
       this.values = {}
@@ -239,10 +229,10 @@ export class FnTransform implements Fn {
   readonly FullName = "Fn::Transform"
 
   public readonly name: string
-  public readonly parameters: { [key: string]: Value }
+  public readonly parameters: { [key: string]: FieldValue }
 
-  constructor(value: Value) {
-    const hasName = (o: Value): o is { Name: string } => {
+  constructor(value: FieldValue) {
+    const hasName = (o: FieldValue): o is { Name: string } => {
       return (
         typeof o === "object" &&
         o !== null &&
@@ -250,12 +240,12 @@ export class FnTransform implements Fn {
       )
     }
     const hasParameters = (
-      o: Value
-    ): o is { Parameters: { [name: string]: Value } } => {
+      o: FieldValue
+    ): o is { Parameters: { [name: string]: FieldValue } } => {
       return (
         typeof o === "object" &&
         o !== null &&
-        typeof (<{ Parameters: { [key: string]: Value } }>o).Parameters ===
+        typeof (<{ Parameters: { [key: string]: FieldValue } }>o).Parameters ===
           "object"
       )
     }
@@ -276,7 +266,7 @@ export class FnRef implements Fn {
 
   public readonly ref: string
 
-  constructor(value: Value) {
+  constructor(value: FieldValue) {
     if (typeof value !== "string") {
       throw new Error("Ref requires a string name")
     }

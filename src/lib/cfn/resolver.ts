@@ -1,6 +1,4 @@
 import {
-  instanceOfFn,
-  Fn,
   FnBase64,
   FnCidr,
   FnFindInMap,
@@ -14,6 +12,7 @@ import {
   FnTransform,
   FnRef,
 } from "./fn"
+import { instanceOfFn, Fn } from "./manifest"
 import { Stack } from "./stack"
 
 const resolveValue = (stack: Stack, name: string): string => {
