@@ -1,6 +1,8 @@
 import { Manifest } from "./manifest"
-import { FnRef, FnSub, FnGetAtt } from "./fn"
+import { FnRef, FnSub, FnGetAtt, FnImportValue } from "./fn"
 import Filter from "./filter"
+import { Stack } from "./stack"
+import { StackBuilder } from "./test/stack_builder"
 
 describe("Filter", () => {
   describe("getDependLogicalIds", () => {
@@ -122,6 +124,48 @@ describe("Filter", () => {
         "StackPrefix",
         "GroupName",
         "UserPool",
+      ])
+    })
+  })
+
+  describe("getImportValueNames", () => {
+    it("refers exported value with a string", () => {
+      const filter = new Filter(
+        new Manifest({
+          Resources: {
+            MyUser: {
+              Type: "AWS::IAM::User",
+              Properties: {
+                UserName: new FnImportValue("BaseStack-UserName"),
+              },
+            },
+          },
+        })
+      )
+      const stack = new StackBuilder().build()
+
+      expect(filter.getImportValueNames("MyUser", stack)).toEqual([
+        "BaseStack-UserName",
+      ])
+    })
+
+    it("refers exported value with a Fn::Sub", () => {
+      const filter = new Filter(
+        new Manifest({
+          Resources: {
+            MyUser: {
+              Type: "AWS::IAM::User",
+              Properties: {
+                UserName: new FnImportValue(new FnSub("${FooStack}-UserName")),
+              },
+            },
+          },
+        })
+      )
+      const stack = new StackBuilder().withParameter("FooStack", "Foo").build()
+
+      expect(filter.getImportValueNames("MyUser", stack)).toEqual([
+        "Foo-UserName",
       ])
     })
   })

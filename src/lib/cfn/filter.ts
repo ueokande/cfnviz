@@ -13,6 +13,8 @@ import {
   FnTransform,
   FnRef,
 } from "./fn"
+import { Stack } from "./stack"
+import { ResolverFactory } from "./resolver"
 
 const children = (fn: Fn): FieldValue[] => {
   if (fn instanceof FnBase64) {
@@ -68,6 +70,27 @@ export default class Filter {
       }
     })
     return refs
+  }
+
+  getImportValueNames(resourceName: string, stack: Stack): string[] {
+    const resource = (this.manifest.Resources ?? {})[resourceName]
+    if (!this.manifest.Resources || !resource) {
+      throw new Error(`resource '${resourceName}' not found`)
+    }
+    const names: string[] = []
+    this.walk(resource.Properties, value => {
+      if (value instanceof FnImportValue) {
+        if (typeof value.name === "string") {
+          names.push(value.name)
+        } else {
+          const name = new ResolverFactory()
+            .create(value.name)
+            .resolve(stack) as string
+          names.push(name)
+        }
+      }
+    })
+    return names
   }
 
   private walk(value: FieldValue, f: (value: FieldValue) => void) {
