@@ -1,28 +1,42 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import StackMap, { Stack } from "../components/stackmap"
+import StackMap from "../components/StackMap"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Manifest, ManifestParser } from "../cloudformation"
-import { TemplatesJsonConnection } from "../graphql-types"
+import * as cfn from "../lib/cfn"
+import {
+  StacksJsonConnection,
+  TemplatesJsonConnection,
+  ExportsJsonConnection,
+} from "../graphql-types"
 
 interface Props {
   data: {
+    stacks: StacksJsonConnection
     templates: TemplatesJsonConnection
+    exports: ExportsJsonConnection
   }
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const stacks = data.templates.edges
-    .map(edge => {
-      if (!edge.node.TemplateBody) {
-        return null
-      }
-      const manifest = ManifestParser.parse(edge.node.TemplateBody) as Manifest
-      return { name: edge.node.StackName, manifest }
-    })
-    .filter((o): o is Stack => o !== null)
+  const stacks = data.stacks.nodes.map(s => {
+    const template = data.templates.nodes.find(
+      node => node.StackName === s.StackName
+    )
+    if (!template) {
+      throw new Error(`The template of stack ${s.StackName} not found`)
+    }
+    const params = Object.fromEntries(
+      s.Parameters!.map(p => [p!.ParameterKey!, p!.ParameterValue!])
+    )
+    return {
+      name: s.StackName!,
+      id: s.StackId!,
+      manifest: cfn.parseYAML(template.TemplateBody!),
+      parameters: params,
+    }
+  })
 
   return (
     <Layout>
@@ -34,12 +48,30 @@ const IndexPage: React.FC<Props> = ({ data }) => {
 
 export const query = graphql`
   query {
-    templates: allTemplatesJson {
-      edges {
-        node {
-          StackName
-          TemplateBody
+    stacks: allStacksJson {
+      nodes {
+        StackId
+        StackName
+        Parameters {
+          ParameterKey
+          ParameterValue
         }
+        Outputs {
+          OutputKey
+          OutputValue
+          ExportName
+        }
+      }
+    }
+    templates: allTemplatesJson {
+      nodes {
+        StackName
+        TemplateBody
+      }
+    }
+    exportsJson: allExportsJson {
+      nodes {
+        ExportingStackId
       }
     }
   }

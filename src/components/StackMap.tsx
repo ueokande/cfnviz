@@ -1,12 +1,14 @@
 import React from "react"
-import { Manifest } from "../cloudformation"
 import { findOrDefaultURL as findAWSIconURL } from "./aws-icon"
-import StackCard from "./StackCard"
-import ResourceCard from "./ResourceCard"
+import Stack from "./Stack"
+import Resource from "./Resource"
+import { Manifest } from "../lib/cfn"
 
 export type Stack = {
   name: string
+  id: string
   manifest: Manifest
+  parameters: { [key: string]: string }
 }
 
 interface Props {
@@ -21,12 +23,12 @@ const StackMap: React.FC<Props> = ({ stacks }) => {
     data: stack,
     x: i * (240 + 10) - width / 2,
     y: -height / 2 + 100,
-    height: Object.keys(stack.manifest.Resources).length * 240,
-    children: Object.entries(stack.manifest.Resources).map(
+    height: Object.keys(stack.manifest.Resources!).length * 240,
+    children: Object.entries(stack.manifest.Resources!).map(
       ([logicalName, resource], j) => ({
         x: 30,
         y: j * 240 + 30,
-        data: { name: logicalName, resource, stack },
+        data: { name: logicalName, resource: resource!, stack },
       })
     ),
   }))
@@ -39,15 +41,15 @@ const StackMap: React.FC<Props> = ({ stacks }) => {
       fontFamily="arial"
     >
       {stackNodes.map(node => (
-        <StackCard
-          stackName={node.data.name}
+        <Stack
+          name={node.data.name}
           x={node.x}
           y={node.y}
           height={node.height}
           key={`stack-${node.data.name}`}
         >
           {node.children.map(resource => (
-            <ResourceCard
+            <Resource
               key={`resource-${resource.data.name}`}
               x={resource.x}
               y={resource.y}
@@ -55,7 +57,7 @@ const StackMap: React.FC<Props> = ({ stacks }) => {
               resourceType={resource.data.resource.Type}
             />
           ))}
-        </StackCard>
+        </Stack>
       ))}
     </svg>
   )

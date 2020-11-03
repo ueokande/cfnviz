@@ -12,7 +12,7 @@ interface Props {
 const ImageRadius = 32
 const ImageBorderWidth = 8
 
-const ResourceCard: React.FC<Props> = ({ logicalName, resourceType, x, y }) => {
+const Resource: React.FC<Props> = ({ logicalName, resourceType, x, y }) => {
   const [showText, setShowText] = React.useState(false)
 
   return (
@@ -50,4 +50,4 @@ const ResourceCard: React.FC<Props> = ({ logicalName, resourceType, x, y }) => {
   )
 }
 
-export default ResourceCard
+export default Resource

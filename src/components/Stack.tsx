@@ -5,20 +5,20 @@ interface Props {
   x: number
   y: number
   height: number
-  stackName: string
+  name: string
   children: React.ReactNode
 }
 
 const StackWidth = 240
 
-const StackCard: React.FC<Props> = ({ stackName, x, y, height, children }) => (
+const Stack: React.FC<Props> = ({ name, x, y, height, children }) => (
   <Group x={x} y={y}>
     <rect width={StackWidth} height={height} fill="lightgray" />
     <text x={StackWidth / 2} y={StackWidth / 2} fontWeight="bold">
-      {stackName}
+      {name}
     </text>
     {children}
   </Group>
 )
 
-export default StackCard
+export default Stack
